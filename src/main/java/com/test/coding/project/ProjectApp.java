@@ -30,27 +30,27 @@ public class ProjectApp
     	List<Project> projects = lines.stream().map(Project::toProjectObject).collect(Collectors.toList());
     	
     	final Map<String, Long> uniqCustomersPerContractId = ProjectUtilityService.getUniqueCustomersPerContractId(projects);
-    	System.out.println("Number of Unique customers per contract id (ContractId & No.Of customer ids)");
+    	System.out.println("The number of unique customerId for each contractId (ContractId & No.Of customer ids)");
     	System.out.println("=============================================================================");
     	uniqCustomersPerContractId.entrySet().stream().forEach(System.out::println);
     	
     	System.out.println();
     	final Map<String, Long> uniqCustomersPerGeozone = ProjectUtilityService.getUniqueCustomersPerGeozone(projects);
-    	System.out.println("Number of Unique customers per geozone (Geozone & No.Of customer ids)");
+    	System.out.println("The number of unique customerId for each geozone (Geozone & No.Of customer ids)");
     	System.out.println("=============================================================================");
     	uniqCustomersPerGeozone.entrySet().stream().forEach(System.out::println);
     	
     	System.out.println();
-    	final Map<Object, List<String>> uniqCustomersListPerGeozone = ProjectUtilityService.getUniqueCustomersListPerGeozone(projects);
-    	System.out.println("List of Unique customers per geozone (Geozone & List of customer ids)");
-    	System.out.println("=============================================================================");
-    	uniqCustomersListPerGeozone.entrySet().stream().forEach(System.out::println);
-    	
-    	System.out.println();
     	final Map<String, Double> averageBuildDurationPerGeozone = ProjectUtilityService.getAveragebuildDurationPerGeozone(projects);
-    	System.out.println("Average build duration per geozone (Geozone & Average build duration in seconds)");
+    	System.out.println("The average buildduration for each geozone (Geozone & Average build duration in seconds)");
     	System.out.println("=============================================================================");
     	averageBuildDurationPerGeozone.entrySet().stream().forEach(System.out::println);
+    	
+    	System.out.println();
+    	final Map<Object, List<String>> uniqCustomersListPerGeozone = ProjectUtilityService.getUniqueCustomersListPerGeozone(projects);
+    	System.out.println("The list of unique customerId for each geozone (Geozone & List of customer ids)");
+    	System.out.println("=============================================================================");
+    	uniqCustomersListPerGeozone.entrySet().stream().forEach(System.out::println);
 		
 	}
 
