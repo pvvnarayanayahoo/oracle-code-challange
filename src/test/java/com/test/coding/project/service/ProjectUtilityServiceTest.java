@@ -22,6 +22,7 @@ import com.test.coding.project.model.Project;
 public class ProjectUtilityServiceTest {
 	
 	private final static List<Project> projects = new ArrayList<>();
+	ProjectUtilityService utilityService = null;
 	
 	/**
 	 * create and initialize required project objects and add them to list of projects object
@@ -36,6 +37,8 @@ public class ProjectUtilityServiceTest {
 		
 		Collections.addAll(projects, p1,p2,p3,p4,p5);
 		
+		utilityService = ProjectUtilityService.getInstance();
+		
 	}
 
 	/**
@@ -45,7 +48,7 @@ public class ProjectUtilityServiceTest {
 	 */
 	@Test
 	public void testGetUniqueCustomersPerContractId() throws Exception {
-		Map<String, Long> result = ProjectUtilityService.getUniqueCustomersPerContractId(projects);
+		Map<String, Long> result = utilityService.getUniqueCustomersPerContractId(projects);
 		Set<String> keys = result.keySet();
 		assertTrue(keys.contains("2345"));
 		assertTrue(keys.contains("2346"));
@@ -60,7 +63,7 @@ public class ProjectUtilityServiceTest {
 	 */
 	@Test
 	public void testGetUniqueCustomersPerGeozone() throws Exception {
-		Map<String, Long> result = ProjectUtilityService.getUniqueCustomersPerGeozone(projects);
+		Map<String, Long> result = utilityService.getUniqueCustomersPerGeozone(projects);
 		Set<String> keys = result.keySet();
 		assertTrue(keys.contains("eu_west"));
 		assertTrue(keys.contains("us_west"));
@@ -77,7 +80,7 @@ public class ProjectUtilityServiceTest {
 	 */
 	@Test
 	public void testGetUniqueCustomersListPerGeozone() throws Exception {
-		Map<Object, List<String>> result = ProjectUtilityService.getUniqueCustomersListPerGeozone(projects);
+		Map<Object, List<String>> result = utilityService.getUniqueCustomersListPerGeozone(projects);
 		Set<Object> keys = result.keySet();
 		assertTrue(keys.contains("eu_west"));
 		assertTrue(keys.contains("us_west"));
@@ -106,7 +109,7 @@ public class ProjectUtilityServiceTest {
 	 */
 	@Test
 	public void testGetAveragebuildDurationPerGeozone() throws Exception {
-		Map<String, Double> result = ProjectUtilityService.getAveragebuildDurationPerGeozone(projects);
+		Map<String, Double> result = utilityService.getAveragebuildDurationPerGeozone(projects);
 		Set<String> keys = result.keySet();
 		assertTrue(keys.contains("eu_west"));
 		assertTrue(keys.contains("us_west"));
